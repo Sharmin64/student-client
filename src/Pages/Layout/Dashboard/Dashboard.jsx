@@ -1,11 +1,10 @@
 import React from "react";
-import Nav from "../Pages/Shared/Nav";
+
 import {NavLink, Outlet} from "react-router-dom";
 
 const Dashboard = () => {
   return (
     <>
-      <Nav />
       <div>
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -27,10 +26,13 @@ const Dashboard = () => {
             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
               {/* Sidebar content here */}
               <li>
-                <a>Sidebar Item 1</a>
+                <NavLink to="/dashboard/student">Student</NavLink>
               </li>
               <li>
-                <a>Sidebar Item 2</a>
+                <NavLink to="/dashboard/studentsearch">StudentSearch</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
               </li>
             </ul>
           </div>
