@@ -1,10 +1,13 @@
 import axios from "axios";
 import useStudent from "./../hooks/useStudent";
 import Swal from "sweetalert2";
+import {useRef} from "react";
 
 const Student = () => {
-  const [student] = useStudent();
+  const [student, , search] = useStudent();
   console.log(student);
+
+  const searchRef = useRef(null);
 
   const handleDelete = (person) => {
     Swal.fire({
@@ -34,9 +37,27 @@ const Student = () => {
     });
   };
 
+  const handleSearch = () => {
+    console.log(searchRef.current.value);
+    search(searchRef.current.value);
+  };
+
   return (
     <>
       <div className="overflow-x-auto">
+        <div className="join">
+          <input
+            ref={searchRef}
+            className="input input-bordered join-item"
+            placeholder="Search"
+          />
+          <button
+            onClick={handleSearch}
+            className="btn join-item rounded-r-full"
+          >
+            Search Name
+          </button>
+        </div>
         <table className="table">
           {/* head */}
           <thead>
